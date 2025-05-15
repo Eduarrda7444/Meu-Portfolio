@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Eduarda Noronha</title>
+    <link rel="icon" type="image/x-icon" href="img/devicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            600: '#dc2626',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-link.active {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        /* Animação do menu mobile */
+        #mobile-menu[aria-expanded="true"] {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ícone do menu mobile */
+        .menu-open #mobile-menu-button svg {
+            display: none;
+        }
+        
+        .menu-open #mobile-menu-button:after {
+            content: '×';
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 1; /* leading-none */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white font-sans transition-colors duration-200">
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-gray-900 fixed w-full z-50 shadow-sm">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="flex items-center">
+                        <img src="img/devicon.svg" class="h-8 w-8" alt="Logo" />
+                        <span class="ml-2 text-2xl font-semibold text-primary-600 dark:text-white">Eduarda Noronha</span>
+                    </a>
+                </div>
+
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Sobre Mim</a>
+                    <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projetos</a>
+                    <a href="#certificates" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Certificados</a>
+                    <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contato</a>
+                </div>
+
+                <!-- Botões direita -->
+                <div class="flex items-center gap-4">
+                    <!-- Toggle de Tema -->
+                    <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-6 h-6 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Botão Mobile -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="h-6 w-6 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="pt-2 pb-4 space-y-1">
+                    <a href="#home" class="nav-link block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                    <a href="#about" class="nav-link block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Sobre Mim</a>
+                    <a href="#projects" class="nav-link block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Projetos</a>
+                    <a href="#certificates" class="nav-link block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Certificados</a>
+                    <a href="#contact" class="nav-link block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Contato</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 bg-white dark:bg-gray-900">
+        <div class="max-w-screen-xl px-4 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                    <span class="text-primary-600">Eduarda</span> Noronha
+                </h1>
+                <p class="mb-6 font-light text-gray-600 md:text-lg lg:text-xl dark:text-gray-300">
+                    Desenvolvedora Full-Stack com experiência em Python, Arduino, redes de computadores e manutenção de hardware. 
+                    Tenho habilidades em criar soluções completas, desde o desenvolvimento de sistemas até a otimização de 
+                    infraestrutura e redes. Sempre buscando inovar, busco entregar soluções eficientes e de alta qualidade.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 transition-colors">
+                        Entre em Contato
+                    </a>
+                    <a href="#projects" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary-600 border border-primary-600 rounded-lg hover:bg-primary-50 dark:hover:bg-gray-800 focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-400 dark:focus:ring-primary-900 transition-colors">
+                        Ver Projetos
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 lg:flex lg:justify-end px-8">
+                <img src="img/mulher.png" alt="Imagem de perfil" class="w-full h-auto rounded-lg max-lg:max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="about" class="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+        <div class="max-w-screen-xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-8 dark:text-white">Sobre Mim</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-600 mb-6 dark:text-gray-300">Sou uma desenvolvedora Full-Stack apaixonada por tecnologia e inovação. </p>
+                    
+                    <h3 class="text-xl font-semibold dark:text-white mb-4">Especializações</h3>
+                    <ul class="list-disc list-inside text-gray-600 mb-6 dark:text-gray-300 space-y-2">
+                        <li>Desenvolvimento backend com Python</li>
+                        <li>Arquitetura e Manutenção de Computadores</li>
+                        <li>Sistemas embarcados</li>
+                        <li>Redes de Computadores e infraestrutura</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold dark:text-white mb-4">Tecnologias</h3>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 flex items-center">
+                            <i class="fab fa-python mr-2 text-primary-600"></i> Python
+                        </span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 flex items-center">
+                            <i class="fab fa-js-square mr-2 text-primary-600"></i> JavaScript
+                        </span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 flex items-center">
+                            <i class="fab fa-react mr-2 text-primary-600"></i> React
+                        </span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 flex items-center">
+                            <i class="fas fa-database mr-2 text-primary-600"></i> SQL/NoSQL
+                        </span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 flex items-center">
+                            <i class="fas fa-microchip mr-2 text-primary-600"></i> Arduino
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projects" class="bg-white dark:bg-gray-900 py-16 px-4">
+        <div class="max-w-screen-xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-8 dark:text-white">Projetos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projeto 1 -->
+                <div class="project-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <img src="img/sisep.svg" alt="SiSEP" class="w-32 h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">SiSEP</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Sistema para gerenciamento de processos seletivos e cadastro de alunos com classificação baseada em critérios pré-definidos.</p>
+                        <a href="https://github.com/Eduarrda7444/SISEP" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium inline-flex items-center">
+                            Ver no GitHub <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2 -->
+                <div class="project-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <img src="img/conecta.svg" alt="ConectaLocal" class="w-32 h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">ConectaLocal</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Aplicativo que conecta pequenos negócios locais com clientes, substituindo panfletos impressos por uma plataforma digital.</p>
+                        <a href="https://github.com/Eduarrda7444/ConectaLocal" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium inline-flex items-center">
+                            Ver no GitHub <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3 -->
+                <div class="project-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <img src="img/piano.svg" alt="Piano Tutor" class="w-32 h-32 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 dark:text-white">Piano Tutor</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Aplicativo para aprendizado de piano usando Arduino, com feedback em tempo real e lições interativas.</p>
+                        <a href="https://github.com/Eduarrda7444/Piano-Tutor" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium inline-flex items-center">
+                            Ver no GitHub <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="https://github.com/Eduarrda7444" target="_blank" class="inline-flex items-center px-6 py-3 text-base font-medium text-center text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 transition-colors">
+                    <i class="fab fa-github mr-2"></i> Ver todos os projetos no GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Certificado -->
+    <section id="certificates" class="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+        <div class="max-w-screen-xl mx-auto">
+            <h2 class="text-3xl font-extrabold mb-8 dark:text-white">Certificados</h2>
+            
+            <div class="certificates-carousel">
+                <!-- Certificado 1 -->
+                <div class="px-4">
+                    <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                        <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center p-4">
+                            <img src="img/aws.jpg" alt="AWS Cloud Computing" class="h-full w-auto object-contain">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 dark:text-white">AWS Academy Cloud Foundations</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Certificado de conclusão do curso da AWS Academy Cloud Foundations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certificado 2 -->
+                <div class="px-4">
+                    <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                        <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center p-4">
+                            <img src="img/eretec.jpg" alt="Organização de Evento" class="h-full w-auto object-contain">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 dark:text-white">Organização de Evento</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Certificado de participação na organização do evento ERETEC.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Adicionar mais certificados conforme necessário -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <footer id="contact" class="bg-white dark:bg-gray-900 rounded-lg shadow-sm">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <h2 class="text-3xl font-extrabold mb-8 dark:text-white">Contato</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 dark:text-white">Entre em contato!</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Estou sempre aberta a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato através do formulário ou diretamente pelos meus canais.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400">Email</p>
+                                <a href="mailto:eduarda.7444@gmail.com" class="text-gray-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">eduarda.7444@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full mr-4">
+                                <i class="fab fa-linkedin-in text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/eduarda-noronha-a8a2882b8/" target="_blank" class="text-gray-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">linkedin.com/in/eduarda-noronha</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full mr-4">
+                                <i class="fab fa-github text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400">GitHub</p>
+                                <a href="https://github.com/Eduarrda7444" target="_blank" class="text-gray-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">github.com/Eduarrda7444</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-800 dark:text-gray-200 mb-1">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="my-8 border-gray-200 dark:border-gray-700">
+            
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline text-primary-600 dark:text-primary-400">Eduarda Noronha</a>. Todos os direitos reservados.
+                </span>
+                <div class="flex mt-4 sm:justify-center sm:mt-0">
+                    <a href="https://www.linkedin.com/in/eduarda-noronha-a8a2882b8/" target="_blank" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Eduarrda7444" target="_blank" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-github text-xl"></i>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                    <a href="mailto:eduarda.7444@gmail.com" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fas fa-envelope text-xl"></i>
+                        <span class="sr-only">Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        // Sistema de tema dark/light
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            
+            // Verifica o tema atual ao carregar a página
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                // Tema escuro está ativo
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+            } else {
+                // Tema claro está ativo
+                document.documentElement.classList.remove('dark');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleDarkIcon.classList.remove('hidden');
+            }
+            
+            // Alterna entre os temas quando o botão é clicado
+            themeToggleBtn.addEventListener('click', function() {
+                // Alterna os ícones
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+                
+                // Se estiver definido no localStorage
+                if (localStorage.getItem('color-theme')) {
+                    // Se for claro, aplica escuro
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                } else {
+                    // Se não estiver definido no localStorage
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+            
+            // Navegação ativa
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Fecha o menu mobile ao clicar em um item
+            const navbarToggle = document.querySelector('[data-collapse-toggle="navbar-default"]');
+            const navbarMenu = document.getElementById('navbar-default');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.classList.add('hidden');
+                });
+            });
+        });
+
+        // Inicializa o carrossel de certificados
+        $(document).ready(function(){
+            $('.certificates-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+
+        mobileMenuButton.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenuButton.setAttribute('aria-expanded', menuOpen);
+            mobileMenuButton.parentElement.parentElement.classList.toggle('menu-open');
+            mobileMenu.classList.toggle('hidden');
+            
+            if(menuOpen) {
+                mobileMenu.style.transform = 'scaleY(1)';
+            } else {
+                mobileMenu.style.transform = 'scaleY(0)';
+            }
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if(menuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenuButton.click();
+            }
+        });
+
+        // Fechar menu ao rolar
+        window.addEventListener('scroll', () => {
+            if(menuOpen) mobileMenuButton.click();
+        });
+    </script>
+</body>
+</html>
